@@ -11,11 +11,12 @@ $data = Import-Csv $csvPath
 foreach ($entry in $data) {
     $userName = $entry.DisplayName
 
-    $user = Get-ADUser -Filter {DisplayName -eq $userName} -Properties DisplayName, GivenName, SurName, Title, Department, HomePhone, OfficePhone, MobilePhone, Fax, StreetAddress, City, PostalCode, State, Country, Office, Company, wWWHomePage -Server $remoteADServer -SearchBase $searchBase
+    $user = Get-ADUser -Filter {DisplayName -eq $userName} -Properties DisplayName, GivenName, SurName, Mail, Title, Department, HomePhone, OfficePhone, MobilePhone, Fax, StreetAddress, City, PostalCode, State, Country, Office, Company, wWWHomePage -Server $remoteADServer -SearchBase $searchBase
 
     if ($user) {
         if ($entry.GivenName) {$user.GivenName = $entry.GivenName}
         if ($entry.SurName) {$user.SurName = $entry.SurName}
+        if ($entry.Mail) {$user.Mail = $entry.Mail}
         if ($entry.Title) {$user.Title = $entry.Title}
         if ($entry.Department) {$user.Department = $entry.Department}
         if ($entry.HomePhone){$user.HomePhone = $entry.HomePhone}
