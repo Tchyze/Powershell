@@ -6,7 +6,7 @@ $csvPath = "C:\Path\to\your.csv"
 $remoteADServer = "RemoteServer"
 $searchBase = "OU=Your,DC=Search,DC=Base"
 
-$data = Import-Csv $csvPath
+$data = Import-Csv $csvPath -Encoding UTF8
 
 foreach ($entry in $data) {
     $userName = $entry.DisplayName
