@@ -1,2 +1,2 @@
 # Powershell
-Powershell Script
+Powershell script for windows server use
